@@ -58,12 +58,12 @@ pylint==2.5.2
 pyparsing==2.4.7
 PyQt5==5.13.2
 PyQt5-sip==12.7.1
-pyqt5-tools==5.13.2.1.6rc1
+pyqt5-tools==5.14.0.1.7b3
 pyrsistent==0.16.0
 python-dateutil==2.8.1
 python-dotenv==0.12.0
 pytz==2019.3
-pywin32==227
+
 pywinpty==0.5.7
 pyzmq==19.0.0
 qtconsole==4.7.2
