@@ -85,7 +85,12 @@
         </ul>
     </div>
     <section id="about" class="ds ms page_about parallax section_padding_top_130 section_padding_bottom_75 table_section table_section_md columns_margin_bottom_30">
-      <div class="container" >
+        {% if messages %}
+        {% for message in messages %} 
+        <h4 style="color: green;">{{message}}</h4>
+        {% endfor%}
+        {% endif%}
+        <div class="container" >
         <div class="row" style="margin-left: 15px;">
           <div id="image001"class="col-md-6 text-center">
             <div class="with_frame_image"> <img src="{% static 'img/picZ/nicebg01.jpg' %}" alt="" class="rounded"> </div>

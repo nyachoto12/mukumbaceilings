@@ -90,12 +90,12 @@ EMAIL_USE_TLS=True
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'webproject',
-        'PASSWORD': '2680',
-        'USER': 'ngoni',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mywebproject',
+        'PASSWORD': '1234',
+        'USER': 'postgres',
         'HOST': 'localhost',
-        'PORT': '3306',
+        
     }
 }
 

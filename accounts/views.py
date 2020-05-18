@@ -9,27 +9,8 @@ from django.conf import settings
 
 # Create your views here.
 def home(request):
-    subscribe=SubscribeForm
-    if request.method=='GET':
-        form=subscribe()
-    else:
-        form=subscribe(request.POST)
-        if form.is_valid():
-            
-            contact_email = form.cleaned_data['contact_email']
-            
-
-            try:
-                send_mail( '','','',contact_email, ['ngoninyachoto@gmail.com'])
-                messages.info(request,'You have successfully subscribed to my newsletter')
-   
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-        return redirect ('/')
-
-    return render(request,'accounts/home.html', {
-        'form': CommentForm
-     })
+    return render(request,'accounts/home.html')
+    
 def login(request):
     if request.method=='POST':
              #saverecord=Users

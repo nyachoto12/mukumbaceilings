@@ -4,20 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngonidzashe</title>
+    <title>Thank you|Ngonidzashe</title>
 </head>
 <body>
-    <div class="email">
-        <p>you can contact us through email</p>
-        <h1>send yo email today</h1>
-        <form action="contact" method="post">
-            {{form.as_p}}
-            {% csrf_token%}
-            <button type="submit">Send Email</button>
-        </form>
-        {% for message in messages %} 
-        {{message}}
-        {% endfor%}
-    </div>
+    {% if messages %}
+    {% for message in messages %} 
+    <h4 style="color: green;">{{message}}</h4>
+    {% endfor%}
+    {% endif%}
 </body>
 </html>
