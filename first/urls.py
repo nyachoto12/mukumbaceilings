@@ -20,13 +20,25 @@ from django.conf.urls.static import static
 #from  .views import home
 
 
+app_name='myshop_mail'
+
 
 urlpatterns = [
    # path('',include('mukumba.urls')),
      #path('',include('webproject.urls')),
-    path('',include('accounts.urls')),
+    path('',include('mukumba.urls')),
     #path('', home),
     #path('library/',include('library.urls')),
     path('admin/', admin.site.urls),
+    path('myshop_mail/',include('myshop_mail.urls',namespace='myshop_mail')),
+    path('accounts/', include('allauth.urls')),
+   
 ] 
 urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)

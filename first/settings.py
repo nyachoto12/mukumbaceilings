@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','+^t6x(@z=@vl)8v%+l1w&4f%f$@o0e)
 #DEBUG = False
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['ngonidzashe.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['41.78.78.2','localhost', '127.0.0.1']
 
 
 # Application definition
@@ -42,8 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'firstapp',
     # 'mukumba.apps.MukumbaConfig',
-    'accounts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'mukumba',
     'crispy_forms',
+    'myshop_mail',
+  
     #'library',
     #'webproject',
 ]
@@ -64,7 +71,7 @@ ROOT_URLCONF = 'first.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates/')],
+        'DIRS': [os.path.join(BASE_DIR,'mukumba/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,7 +154,17 @@ MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+)
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-django_heroku.settings(locals())
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+#DEBUG = config('DEBUG', cast=bool)
+#STRIPE_PUBLIC_KEY = config('STRIPE_LIVE_PUBLIC_KEY')
+#STRIPE_SECRET_KEY = config('STRIPE_LIVE_SECRET_KEY')

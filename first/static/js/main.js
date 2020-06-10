@@ -120,7 +120,7 @@ function windowLoadInit() {
 
 	
 	//toggle mobile menu
-	/*jQuery('.toggle_menu').on('click', function(){
+	jQuery('.toggle_menu').on('click', function(){
 		jQuery(this)
 			.toggleClass('mobile-active')
 				.closest('.page_header')
@@ -191,7 +191,7 @@ function windowLoadInit() {
 			}
 		});
 	} //sideHeader check
-	*/
+	
 	//1 and 2/3/4th level mainmenu offscreen fix
 	var MainWindowWidth = jQuery(window).width();
 	var boxWrapperWidth = jQuery('#box_wrapper').width();
